@@ -1,6 +1,7 @@
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import SkillCard from "../../../Components/SkillCard/SkillCard";
-import skills from "/public/SkillsData/skillsData";
+// import skills from "/public/SkillsData/skillsData";
+import SkillsData from '../../../../public/skillsData/skillsData'
 
 const Skills = () => {
   return (
@@ -15,7 +16,7 @@ const Skills = () => {
         headline="My Skills"
       />
       <div className="grid gap-3 mt-8 lg:grid-cols-4 grid-cols-3">
-        {skills?.map(skill => (
+        {SkillsData?.map(skill => (
           <SkillCard key={skill?.id} title={skill?.title} logo={skill?.logo} />
         ))}
       </div>
