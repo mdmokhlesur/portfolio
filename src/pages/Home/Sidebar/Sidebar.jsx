@@ -1,7 +1,8 @@
 import { Icon } from "@iconify/react";
 import profile from "../../../assets/profile.jpg"
 import useTheme from "../../../hooks/useTheme";
-import SideNav from "../sideNav/SideNav";
+// import SideNav from "../sideNav/SideNav";
+import SideNav from "../SideNav/SideNav"
 import Button from "../../../Components/Button/Button";
 const Sidebar = () => {
     const { theme } = useTheme();
