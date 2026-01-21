@@ -1,20 +1,26 @@
-import html from "/src/assets/skillsLogo/html.png";
-import css from "/src/assets/skillsLogo/css.png";
 import bootstrap from "/src/assets/skillsLogo/bootstrap.png";
-import tailwind from "/src/assets/skillsLogo/tailwind.png";
-import js from "/src/assets/skillsLogo/js.png";
-import react from "/src/assets/skillsLogo/react.png";
-import redux from "/src/assets/skillsLogo/redux.png";
-import nodejs from "/src/assets/skillsLogo/nodejs.png";
+import css from "/src/assets/skillsLogo/css.png";
 import expressJS from "/src/assets/skillsLogo/expressJS.png";
+import firebase from "/src/assets/skillsLogo/firebase.png";
+import github from "/src/assets/skillsLogo/github.png";
+import html from "/src/assets/skillsLogo/html.png";
+import js from "/src/assets/skillsLogo/js.png";
 import mongodb from "/src/assets/skillsLogo/mongodb.png";
 import nextJs from "/src/assets/skillsLogo/Next.js.png";
-import github from "/src/assets/skillsLogo/github.png";
-import firebase from "/src/assets/skillsLogo/firebase.png";
-import figma from "/src/assets/skillsLogo/figma.png";
-import npm from "/src/assets/skillsLogo/npm.png";
+import nodejs from "/src/assets/skillsLogo/nodejs.png";
 import photoshop from "/src/assets/skillsLogo/photoshop.png";
 import postman from "/src/assets/skillsLogo/postman.png";
+import react from "/src/assets/skillsLogo/react.png";
+import redux from "/src/assets/skillsLogo/redux.png";
+import tailwind from "/src/assets/skillsLogo/tailwind.png";
+
+// New Skill Imports
+import aws from "/src/assets/skillsLogo/aws.png";
+import redis from "/src/assets/skillsLogo/redis.png";
+import kubernetes from "/src/assets/skillsLogo/kubernetes.png";
+// import kafka from "/src/assets/skillsLogo/kafka.png";
+import microservices from "/src/assets/skillsLogo/microservices.png";
+
 const skills = [
   {
     id: 1,
@@ -42,64 +48,81 @@ const skills = [
     logo: js,
   },
   {
-    id: 10,
+    id: 6,
     title: "next JS",
     logo: nextJs,
   },
   {
-    id: 6,
+    id: 7,
     title: "react JS",
     logo: react,
   },
   {
-    id: 17,
+    id: 8,
     title: "redux",
     logo: redux,
   },
   {
-    id: 7,
+    id: 9,
     title: "Node JS",
     logo: nodejs,
   },
   {
-    id: 8,
+    id: 10,
     title: "express JS",
     logo: expressJS,
   },
   {
-    id: 9,
+    id: 11,
     title: "mongoDB",
     logo: mongodb,
   },
   {
-    id: 11,
+    id: 12,
     title: "GitHub",
     logo: github,
   },
   {
-    id: 12,
+    id: 13,
     title: "Firebase",
     logo: firebase,
   },
   {
-    id: 13,
-    title: "Figma",
-    logo: figma,
-  },
-  {
     id: 14,
-    title: "npm",
-    logo: npm,
-  },
-  {
-    id: 15,
     title: "photoshop",
     logo: photoshop,
   },
   {
-    id: 16,
+    id: 15,
     title: "postman",
     logo: postman,
   },
+  // Added Skills
+  {
+    id: 16,
+    title: "AWS",
+    logo: aws,
+  },
+  {
+    id: 17,
+    title: "Redis",
+    logo: redis,
+  },
+  {
+    id: 18,
+    title: "Kubernetes",
+    logo: kubernetes,
+  },
+  // {
+  //   id: 21,
+  //   title: "Kafka",
+  //   logo: kafka,
+  // },
+  {
+    id: 22,
+    title: "Microservices",
+    logo: microservices,
+  },
 ];
+
 export default skills;
