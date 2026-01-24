@@ -52,7 +52,7 @@ const Contract = () => {
       >
         <div data-aos="zoom-in-right" className="form-control">
           <label className="label">
-            <span className="label-text  text-base uppercase">Your Name</span>
+            <span className="label-text  text-base uppercase">Your Name </span>
           </label>
           <input
             type="text"
