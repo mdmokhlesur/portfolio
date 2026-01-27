@@ -1,6 +1,6 @@
 # Welcome! 👋
 
-Thank you for visiting my GitHub profile. I am a developer dedicated to building clean, functional, and user-centric web applications.
+Thank you for visiting my GitHub profile.
 
 ### 🌐 Explore My Work
 You can find my full portfolio, featured projects, and professional background here:
