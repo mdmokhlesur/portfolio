@@ -3,7 +3,7 @@
 Thank you for visiting my GitHub profile.
 
 ### 🌐 Explore My Work
-You can find my full portfolio, featured projects, and professional background here:
+You can find my full portfolio, featured projects:
 👉 **[mokhlesur.vercel.app](https://mokhlesur.vercel.app/)**
 
 ---
