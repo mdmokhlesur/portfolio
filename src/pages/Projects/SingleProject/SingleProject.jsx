@@ -60,7 +60,7 @@ const SingleProject = ({ project }) => {
           )}
         </p>
         <div className="flex justify-between mt-4">
-          <a
+          {liveLink && <a
             target="_blank"
             rel="noreferrer"
             href={liveLink}
@@ -72,8 +72,8 @@ const SingleProject = ({ project }) => {
               />
               View Project
             </Button>
-          </a>
-          <div className="pl-1 py-1 rounded-md flex items-center">
+          </a>}
+          {github?.length > 0 && <div className="pl-1 py-1 rounded-md flex items-center">
             <Icon className="text-lg" icon="fa-brands:github" />
             {github?.map((item) => (
               <a
@@ -92,7 +92,7 @@ const SingleProject = ({ project }) => {
                 )}
               </a>
             ))}
-          </div>
+          </div>}
         </div>
       </div>
     </div>
