@@ -4,13 +4,17 @@ import useTheme from "../../hooks/useTheme";
 const SectionTitle = ({ logo, title, headline }) => {
     const { theme } = useTheme();
     return (
-        <>
-            <div data-aos="slide-up" className={`flex w-fit gap-2 items-center border px-3 py-1 rounded-full mb-8 xl:mt-24 ${theme !== "light" && "border-zinc-600"}`}>
-                <Icon className="text-base text-red-500" icon={logo} />
-                <span className="uppercase text-base">{title}</span>
+        <div className="section-heading" data-aos="fade-up">
+            <div className={`section-kicker ${theme !== "light" ? "text-zinc-300" : "text-zinc-600"}`}>
+                <Icon className="text-sm text-red-600" icon={logo} />
+                <span>{title}</span>
             </div>
-            <h1 className={`capitalize font-normal text-2xl lg:text-4xl ${theme !== "light" && "text-white"}`}>{headline}</h1>
-        </>
+            {headline && (
+                <h2 className={`section-title max-w-4xl ${theme !== "light" && "text-white"}`}>
+                    {headline}
+                </h2>
+            )}
+        </div>
     );
 };
 

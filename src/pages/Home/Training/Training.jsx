@@ -3,30 +3,30 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
 const Training = () => {
   return (
-    <div
+    <section
       id="my-training"
-      className="mt-16 lg:mt-0 max-w-screen overflow-hidden"
+      className="max-w-screen overflow-hidden"
     >
       <SectionTitle
-        logo="fa-solid:graduation-cap"
-        title="My Training"
-        headline="My Training"
+        logo="fa-solid:language"
+        title="More"
+        headline="Languages and interests"
       />
-      <div className="grid md:grid-cols-2 gap-10 mt-10">
+      <div className="mt-10 grid gap-8">
         <GraduateCard
-          year="jan, 2023 - Jane, 2023"
-          title="Web Development"
-          subTitle="Programming Hero, Online"
-          description="I Have Learned HTML, CSS, JavaScript, React, Node Js, Next js And Many Other from this course. I Have Also Learned The Skills Of Time Management From This Course."
+          year="Languages"
+          title="Bangla, English, Hindi"
+          subTitle="Native / Professional / Conversational"
+          description="Bangla: Native. English: Professional working proficiency. Hindi: Conversational."
         />
         <GraduateCard
-          year="October, 2022 - Jun, 2023"
-          title="Web Development"
-          subTitle="Ideal Institute Of Science And Technology (Iist) - Mirpur"
-          description="During That time i passed level-4 Exam in Wordpress Theme Development."
+          year="Interests"
+          title="Frontend craft and product learning"
+          subTitle="Web apps, open source, UI/UX, sports analytics"
+          description="Building personal web applications, exploring modern frontend technologies, contributing to open-source projects, reading JavaScript blogs, playing football, and recreating modern web interfaces."
         />
       </div>
-    </div>
+    </section>
   );
 };
 

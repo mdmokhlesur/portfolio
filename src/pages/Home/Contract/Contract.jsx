@@ -25,21 +25,32 @@ const Contract = () => {
   };
 
   return (
-    <div id="contract" className="mt-14 lg:mt-0">
+    <section id="contract" className="contact-section grid gap-8 border-t pt-16 lg:grid-cols-[0.85fr_1.15fr]">
       <div>
         <SectionTitle
           logo="fa-regular:envelope"
-          title="Contract Me"
-          headline="Contact With Me"
+          title="Contact Me"
+          headline="Let's build something useful"
         />
+        <p className="mt-6 max-w-md leading-8">
+          Send a short note about your idea, product, or role. I will get the message directly in my inbox and reply from there.
+        </p>
+        <div className="mt-8 space-y-3 text-sm">
+          <a className="profile-contact-row" href="mailto:mokhlesurinfo5@gmail.com">
+            <Icon icon="fa-solid:envelope" /> mokhlesurinfo5@gmail.com
+          </a>
+          <a className="profile-contact-row" href="tel:+8801818886577">
+            <Icon icon="heroicons-outline:phone" /> +8801818886577
+          </a>
+        </div>
       </div>
       <form
-        className="bg-base-200 rounded-md contract-from p-10 mt-16 space-y-5"
+        className="contract-form space-y-5"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div data-aos="zoom-in-right" className="form-control">
+        <div data-aos="fade-up" className="form-control">
           <label className="label">
-            <span className="label-text  text-base uppercase">Your Name </span>
+            <span className="label-text text-xs font-semibold uppercase">Your Name </span>
           </label>
           <input
             type="text"
@@ -48,12 +59,12 @@ const Contract = () => {
             className="input rounded input-bordered w-full"
           />
           {errors.name && (
-            <span className="text-red-700 mt-1">Name is required</span>
+            <span className="form-error mt-1">Name is required</span>
           )}
         </div>
-        <div data-aos="zoom-in-right" className="form-control">
+        <div data-aos="fade-up" className="form-control">
           <label className="label">
-            <span className="label-text  text-base uppercase">Email</span>
+            <span className="label-text text-xs font-semibold uppercase">Email</span>
           </label>
           <input
             type="email"
@@ -61,12 +72,12 @@ const Contract = () => {
             className="input rounded input-bordered w-full"
           />
           {errors.email && (
-            <span className="text-red-700 mt-1">Email is required</span>
+            <span className="form-error mt-1">Email is required</span>
           )}
         </div>
-        <div data-aos="zoom-in-right" className="form-control">
+        <div data-aos="fade-up" className="form-control">
           <label className="label">
-            <span className="label-text  text-base uppercase">Subject</span>
+            <span className="label-text text-xs font-semibold uppercase">Subject</span>
           </label>
           <input
             type="text"
@@ -75,12 +86,12 @@ const Contract = () => {
             className="input rounded input-bordered w-full"
           />
           {errors.subject && (
-            <span className="text-red-700 mt-1">Subject is required</span>
+            <span className="form-error mt-1">Subject is required</span>
           )}
         </div>
-        <div data-aos="zoom-in-right" className="form-control">
+        <div data-aos="fade-up" className="form-control">
           <label className="label">
-            <span className="label-text  text-base uppercase">
+            <span className="label-text text-xs font-semibold uppercase">
               Your Message
             </span>
           </label>
@@ -90,14 +101,14 @@ const Contract = () => {
             className="textarea textarea-bordered textarea-lg w-full rounded"
           ></textarea>
           {errors.message && (
-            <span className="text-red-700 mt-1">Message is required</span>
+            <span className="form-error mt-1">Message is required</span>
           )}
         </div>
         <Button type="submit" size="full" disabled={isSubmitting}>
           {isSubmitting ? "Sending..." : "Send Message"} <Icon className="text-xl relative top-[1px]" icon="fa-brands:telegram-plane" />
         </Button>
       </form>
-    </div>
+    </section>
   );
 };
 

@@ -1,27 +1,37 @@
 import { Icon } from "@iconify/react";
 import profile from "../../../assets/profile.jpg"
 import useTheme from "../../../hooks/useTheme";
-// import SideNav from "../sideNav/SideNav";
-import SideNav from "../SideNav/SideNav"
-import Button from "../../../Components/Button/Button";
+
 const Sidebar = () => {
     const { theme } = useTheme();
     return (
-        <div id="slideBar" className="xl:sticky top-32 z-20 left-0">
-            <div className={`border relative rounded box-border p-10 w-[100%] md:w-[80%] lg:w-[70%] xl:w-[370px] xl:mr-auto xl:ml-0 mr-auto ml-auto ${theme !== 'light' && 'border-zinc-600'}`}>
-                <figure className=" rounded overflow-hidden"><img src={profile} alt="" /></figure>
-                <div className="mt-6">
-                    <h3 className={`${theme !== "light" && "text-white"}  text-xl sm:text-2xl capitalize`}>Mokhlesur Rahman</h3>
-                    <h4 className="sm:text-base font-mono flex items-center gap-1"><Icon className="mt-1 text-base w-5" icon="fa-solid:envelope" /> mokhlesurinfo5@gmail.com</h4>
-                    <h4 className=" text-sm sm:text-base font-mono flex items-center gap-1"><Icon className="text-lg w-5" icon="heroicons-outline:phone" />+8801818886577</h4>
-                    <h4 className=" text-sm sm:text-base font-mono flex items-center gap-1"><Icon className="text-lg w-5" icon="heroicons-outline:location-marker" />Dhaka,Bangladesh</h4>
-                    <a href="Mokhlesur-Rahman-resume.pdf" download="Mokhlesur-Rahman-resume.pdf">
-                        <Button className="mt-3" size="full"><Icon icon="fa-solid:download" /> Download CV</Button>
-                    </a>
+        <aside id="slideBar" className="profile-panel-wrap order-1 lg:order-1 lg:self-start">
+            <div className={`profile-panel relative overflow-hidden border ${theme !== 'light' && 'border-zinc-700'}`}>
+                <figure className="profile-image overflow-hidden">
+                    <img className="h-full w-full object-cover" src={profile} alt="Mokhlesur Rahman" />
+                </figure>
+                <div className="profile-caption">
+                    <p className="eyebrow mb-2">Front-End Developer</p>
+                    <h2 className={`${theme !== "light" && "text-white"} profile-name font-semibold capitalize`}>Mokhlesur Rahman</h2>
+                   
+                    <div className="mt-5 space-y-3 text-sm">
+                        <a className="profile-contact-row" href="mailto:mokhlesurinfo5@gmail.com"><Icon className="text-base" icon="fa-solid:envelope" /> mokhlesurinfo5@gmail.com</a>
+                        <a className="profile-contact-row" href="tel:+8801818886577"><Icon className="text-lg" icon="heroicons-outline:phone" />+880 1818-886577</a>
+                        <span className="profile-contact-row"><Icon className="text-lg" icon="heroicons-outline:location-marker" />Chattogram, Bangladesh</span>
+                        <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://github.com/mokhles018"><Icon className="text-lg" icon="fa-brands:github" />github.com/mokhles018</a>
+                        <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://linkedin.com/in/mokhlesurrahman018"><Icon className="text-lg" icon="fa-brands:linkedin" />linkedin.com/in/mokhlesurrahman018</a>
+                    </div>
+                    <div className="profile-actions mt-6 grid grid-cols-2 gap-2">
+                        <a href="Mokhlesur-Rahman-resume.pdf" download="Mokhlesur-Rahman-resume.pdf">
+                            <Icon icon="fa-solid:download" /> Resume
+                        </a>
+                        <a href="#contract">
+                            <Icon icon="fa-regular:envelope" /> Contact
+                        </a>
+                    </div>
                 </div>
-                <SideNav />
             </div>
-        </div>
+        </aside>
     );
 };
 

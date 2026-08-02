@@ -3,28 +3,30 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
 const Education = () => {
   return (
-    <div
+    <section
       id="my-education"
-      className="mt-16 lg:mt-0 max-w-screen overflow-hidden"
+      className="max-w-screen overflow-hidden"
     >
       <SectionTitle
         logo="fa-solid:graduation-cap"
         title="My education"
-        headline="My education"
+        headline="Education"
       />
-      <div className="grid md:grid-cols-2 gap-3 mt-10 overflow-hidden">
+      <div className="mt-10 grid gap-8 overflow-hidden">
         <GraduateCard
-          year="july, 2018 - march, 2023"
-          title="Diploma In Computer Science And Technology"
+          year="2023"
+          title="Diploma in Engineering, Computer Science"
           subTitle="Dhaka Polytechnic Institute"
+          description="CGPA: 3.56 / 4.00"
         />
         <GraduateCard
           year="2018"
-          title="SSC"
-          subTitle="lakshmipur technical training center"
+          title="Secondary School Certificate"
+          subTitle="Lakshmipur Technical Training Center"
+          description="Electrical and Electronic Engineering. GPA: 4.93 / 5.00"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

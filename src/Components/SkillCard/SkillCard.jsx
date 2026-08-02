@@ -1,13 +1,12 @@
 const SkillCard = ({ logo, title }) => {
   return (
-    <div data-aos="slide-left" data-aos-duration={800} className="flex flex-col items-center justify-center rounded-lg text-center p-5 cursor-pointer bg-base-200 hover:bg-slate-100 hover:text-black">
+    <div data-aos="fade-up" data-aos-duration={650} className="skill-tile group flex min-h-28 flex-col items-center justify-center p-4 text-center transition duration-300">
       <img
-        className="max-h-20 mx-auto"
-        style={{ maxWidth: "50%" }}
+        className="mx-auto h-11 max-w-16 object-contain transition duration-300 group-hover:scale-105 md:h-12"
         src={logo}
-        alt=""
+        alt={title}
       />
-      <h1 className=" mt-2 font-semibold capitalize">{title}</h1>
+      <h3 className="mt-4 text-sm font-semibold capitalize text-base-content">{title}</h3>
     </div>
   );
 };
