@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
+import CursorEffect from "./Components/CursorEffect/CursorEffect";
 import Aos from "aos";
 import { useEffect } from "react";
 
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <div className="portfolio-app flex min-h-screen flex-col">
+      <CursorEffect />
       <Navbar />
       <main className="w-full">
         <Outlet />
