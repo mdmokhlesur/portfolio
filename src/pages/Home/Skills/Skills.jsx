@@ -16,7 +16,7 @@ const Skills = () => {
       />
       <div className="skills-grid mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
         {SkillsData?.map(skill => (
-          <SkillCard key={skill?.id} title={skill?.title} logo={skill?.logo} />
+          <SkillCard key={skill?.id} title={skill?.title} logo={skill?.logo} icon={skill?.icon} />
         ))}
       </div>
     </section>
