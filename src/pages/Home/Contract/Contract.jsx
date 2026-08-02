@@ -28,7 +28,7 @@ const Contract = () => {
     <section id="contract" className="contact-section grid gap-8 border-t pt-16 lg:grid-cols-[0.85fr_1.15fr]">
       <div>
         <SectionTitle
-          logo="fa-regular:envelope"
+          logo="octicon:mail-16"
           title="Contact Me"
           headline="Let's build something useful"
         />
@@ -37,10 +37,10 @@ const Contract = () => {
         </p>
         <div className="mt-8 space-y-3 text-sm">
           <a className="profile-contact-row" href="mailto:mokhlesurinfo5@gmail.com">
-            <Icon icon="fa-solid:envelope" /> mokhlesurinfo5@gmail.com
+            <Icon icon="octicon:mail-16" /> mokhlesurinfo5@gmail.com
           </a>
           <a className="profile-contact-row" href="tel:+8801818886577">
-            <Icon icon="heroicons-outline:phone" /> +8801818886577
+            <Icon icon="octicon:device-mobile-16" /> +8801818886577
           </a>
         </div>
       </div>
@@ -105,7 +105,7 @@ const Contract = () => {
           )}
         </div>
         <Button type="submit" size="full" disabled={isSubmitting}>
-          {isSubmitting ? "Sending..." : "Send Message"} <Icon className="text-xl relative top-[1px]" icon="fa-brands:telegram-plane" />
+          {isSubmitting ? "Sending..." : "Send message"} <Icon className="text-xl relative top-[1px]" icon="octicon:paper-airplane-16" />
         </Button>
       </form>
     </section>

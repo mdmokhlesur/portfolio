@@ -9,10 +9,9 @@ const Footer = () => {
                 <p>Copyright © 2026 - All rights reserved by Mokhlesur Rahman</p>
             </div>
             <div className="grid-flow-col gap-3 text-xl md:place-self-center md:justify-self-end">
-                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/mokhlesurRahman018/"><Icon icon="fa-brands:linkedin" /></a>
-                <a target="_blank" rel="noreferrer" href="https://t.me/pmrahman"><Icon icon="fa-brands:telegram" /></a>
-                <a target="_blank" rel="noreferrer" href="https://github.com/pm-rahman"><Icon icon="fa-brands:github" /></a>
-                <a target="_blank" rel="noreferrer" href="https://web.facebook.com/pm.mokhles"><Icon icon="fa-brands:facebook-square" /></a>
+                <a target="_blank" rel="noreferrer" href="mailto:mokhlesurinfo5@gmail.com" aria-label="Email"><Icon icon="octicon:mail-16" /></a>
+                <a target="_blank" rel="noreferrer" href="https://github.com/mokhles018" aria-label="GitHub"><Icon icon="fa-brands:github" /></a>
+                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/mokhlesurrahman018/" aria-label="LinkedIn"><Icon icon="fa-brands:linkedin" /></a>
             </div>
         </footer>
     );

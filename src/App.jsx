@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
@@ -6,6 +6,8 @@ import Aos from "aos";
 import { useEffect } from "react";
 
 function App() {
+  const { pathname, hash } = useLocation();
+
   useEffect(() => {
     Aos.init({
       duration: 700,
@@ -14,6 +16,12 @@ function App() {
       offset: 80,
     });
   }, []);
+
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+  }, [pathname, hash]);
 
   return (
     <div className="portfolio-app flex min-h-screen flex-col">

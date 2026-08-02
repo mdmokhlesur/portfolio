@@ -11,7 +11,7 @@ const Button = ({ type, onClick, size, className = "", children, ...props }) => 
         :size==="wide"?"mx-auto py-3 px-6 gap-3 hover:gap-5"
         : "text-sm py-3 px-4 gap-2 hover:gap-3"
       }
-       primary-button group/button flex items-center justify-center font-semibold capitalize`}
+       primary-button group/button flex items-center justify-center font-semibold`}
     >
       {children}
     </button>

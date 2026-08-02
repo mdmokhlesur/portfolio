@@ -10,7 +10,7 @@ const Skills = () => {
       data-aos="fade-up"
     >
       <SectionTitle
-        logo="fa-solid:user-cog"
+        logo="octicon:code-square-16"
         title="My Skills"
         headline="Technical skills from my current frontend and product work"
       />

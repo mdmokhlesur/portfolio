@@ -5,7 +5,7 @@ const Experience = () => {
   return (
     <section id="experience" className="section-band" data-aos="fade-up">
       <SectionTitle
-        logo="fa-solid:briefcase"
+        logo="octicon:git-branch-16"
         title="Experience"
         headline="Professional work across ERP, desktop, and analytics products"
       />

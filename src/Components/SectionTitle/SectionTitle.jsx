@@ -6,7 +6,7 @@ const SectionTitle = ({ logo, title, headline }) => {
     return (
         <div className="section-heading" data-aos="fade-up">
             <div className={`section-kicker ${theme !== "light" ? "text-zinc-300" : "text-zinc-600"}`}>
-                <Icon className="text-sm text-red-600" icon={logo} />
+                <Icon className="text-sm" icon={logo} />
                 <span>{title}</span>
             </div>
             {headline && (

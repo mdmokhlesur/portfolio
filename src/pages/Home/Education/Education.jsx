@@ -8,8 +8,8 @@ const Education = () => {
       className="max-w-screen overflow-hidden"
     >
       <SectionTitle
-        logo="fa-solid:graduation-cap"
-        title="My education"
+        logo="octicon:mortar-board-16"
+        title="Education"
         headline="Education"
       />
       <div className="mt-10 grid gap-8 overflow-hidden">

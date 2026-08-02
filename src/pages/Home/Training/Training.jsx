@@ -8,7 +8,7 @@ const Training = () => {
       className="max-w-screen overflow-hidden"
     >
       <SectionTitle
-        logo="fa-solid:language"
+        logo="octicon:globe-16"
         title="More"
         headline="Languages and interests"
       />

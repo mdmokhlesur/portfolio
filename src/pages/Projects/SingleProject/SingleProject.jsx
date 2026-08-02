@@ -10,7 +10,7 @@ const SingleProject = ({ project, index = 0 }) => {
       className="project-card group h-full overflow-hidden border-t transition duration-300"
       data-aos="fade-up"
     >
-      <figure className="project-thumb relative overflow-hidden bg-zinc-100">
+      <figure className="project-thumb relative overflow-hidden">
         <img className="h-full w-full object-cover transition duration-500 group-hover:scale-105" src={thumbnail} alt={title} />
         <span className="project-index">
           {String(index + 1).padStart(2, "0")}
@@ -18,7 +18,7 @@ const SingleProject = ({ project, index = 0 }) => {
       </figure>
       <div className="project-content flex flex-col py-6 md:px-2">
         <p className="eyebrow mb-3">{role || "Selected project"}</p>
-        <h3 className="project-title text-base-content">{title}</h3>
+        <h3 className="project-title text-base-content"><Icon icon="octicon:repo-16" />{title}</h3>
         <p className="my-5 grow leading-7">
           {fullDescription ? (
             <>
