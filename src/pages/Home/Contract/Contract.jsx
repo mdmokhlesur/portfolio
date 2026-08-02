@@ -1,41 +1,29 @@
-import { useRef } from "react";
-import emailjs from "@emailjs/browser";
-
 import { useForm } from "react-hook-form";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { toast } from "react-toastify";
 import { Icon } from "@iconify/react";
 import Button from "../../../Components/Button/Button";
+import { sendContactEmail } from "../../../services/sendContactEmail";
 
 const Contract = () => {
-  const form = useRef();
-
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
-  const onSubmit = () => {
-    emailjs
-      .sendForm(
-        import.meta.env.VITE_mail_service,
-        import.meta.env.VITE_mail_template,
-        form.current,
-        import.meta.env.VITE_mail_publicKey
-      )
-      .then(
-        (result) => {
-          toast("Email Send Successfully");
-          console.log(result.text);
-          reset();
-        },
-        (error) => {
-          toast(error.text || "Something was Wrong");
-          console.log(error.text);
-        }
-      );
+
+  const onSubmit = async (data) => {
+    try {
+      await sendContactEmail(data);
+      toast("Email Send Successfully");
+      reset();
+    } catch (error) {
+      toast(error.message || "Something was Wrong");
+      console.error(error);
+    }
   };
+
   return (
     <div id="contract" className="mt-14 lg:mt-0">
       <div>
@@ -46,7 +34,6 @@ const Contract = () => {
         />
       </div>
       <form
-        ref={form}
         className="bg-base-200 rounded-md contract-from p-10 mt-16 space-y-5"
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -106,8 +93,8 @@ const Contract = () => {
             <span className="text-red-700 mt-1">Message is required</span>
           )}
         </div>
-        <Button type="submit" size="full">
-          Send Massage <Icon className="text-xl relative top-[1px]" icon="fa-brands:telegram-plane" />
+        <Button type="submit" size="full" disabled={isSubmitting}>
+          {isSubmitting ? "Sending..." : "Send Message"} <Icon className="text-xl relative top-[1px]" icon="fa-brands:telegram-plane" />
         </Button>
       </form>
     </div>
