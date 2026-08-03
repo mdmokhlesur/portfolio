@@ -372,9 +372,14 @@ p {
     background: rgba(13, 17, 23, 0.92);
 }
 
-[data-theme="forest"] .github-header,
-[data-theme="light"] .github-header {
+[data-theme="forest"] .github-header {
     background: #010409;
+}
+
+[data-theme="light"] .github-header {
+    background: rgba(246, 248, 250, 0.96);
+    border-color: $line !important;
+    color: $ink;
 }
 
 .github-topbar {
@@ -540,6 +545,45 @@ p {
     border-color: #8b949e;
     background: #161b22;
     color: #ffffff;
+}
+
+[data-theme="light"] .github-brand {
+    color: $ink;
+}
+
+[data-theme="light"] .github-brand:hover {
+    color: $primary-color-deep;
+}
+
+[data-theme="light"] .github-tabs {
+    border-bottom-color: $line;
+}
+
+[data-theme="light"] .github-tabs .menu a {
+    color: $muted;
+    opacity: 1;
+}
+
+[data-theme="light"] .github-tabs .menu a:hover,
+[data-theme="light"] .github-tabs .menu a.active {
+    color: $ink;
+}
+
+[data-theme="light"] .github-header .github-icon-button,
+[data-theme="light"] .github-header .theme-toggle {
+    border-color: $line;
+    color: $ink;
+}
+
+[data-theme="light"] .github-header .github-icon-button:hover,
+[data-theme="light"] .github-header .theme-toggle:hover {
+    border-color: #8c959f;
+    background: $paper;
+    color: $primary-color-deep;
+}
+
+[data-theme="light"] .nav-brand-avatar {
+    border-color: $line;
 }
 
 .nav-brand-avatar {
