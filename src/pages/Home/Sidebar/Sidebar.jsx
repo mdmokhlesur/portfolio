@@ -13,7 +13,7 @@ const Sidebar = () => {
                 </figure>
                 <div className="profile-caption">
                     <h2 className="profile-name font-semibold">Mokhlesur Rahman</h2>
-                    <p className="profile-username">mokhles018 · he/him</p>
+                    <p className="profile-username">mdmokhlesur · he/him</p>
                     <p className="profile-bio mt-5">
                         Hi there, I&apos;m Mokhlesur Rahman. Front-End Developer building modern web and desktop applications.
                     </p>
@@ -28,7 +28,7 @@ const Sidebar = () => {
                         <a className="profile-contact-row" href="mailto:mokhlesurinfo5@gmail.com"><Icon className="text-base" icon="octicon:mail-16" /> mokhlesurinfo5@gmail.com</a>
                         <a className="profile-contact-row" href="tel:+8801818886577"><Icon className="text-lg" icon="octicon:device-mobile-16" />+880 1818-886577</a>
                         <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://mokhlesur.vercel.app/"><Icon className="text-lg" icon="octicon:link-16" />mokhlesur.vercel.app</a>
-                        <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://github.com/mokhles018"><Icon className="text-lg" icon="fa-brands:github" />github.com/mokhles018</a>
+                        <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://github.com/mdmokhlesur"><Icon className="text-lg" icon="fa-brands:github" />github.com/mdmokhlesur</a>
                         <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://linkedin.com/in/mokhlesurrahman018"><Icon className="text-lg" icon="fa-brands:linkedin" />linkedin.com/in/mokhlesurrahman018</a>
                     </div>
                 </div>
