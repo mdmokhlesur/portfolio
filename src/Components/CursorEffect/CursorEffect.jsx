@@ -1,67 +1,24 @@
 import { useEffect, useRef } from "react";
 
-const interactiveSelector = [
-  "a",
-  "button",
-  "input",
-  "textarea",
-  "select",
-  "label",
-  "[role='button']",
-  "[tabindex]:not([tabindex='-1'])",
-].join(",");
-
-const textSelector = [
-  "input:not([type='checkbox']):not([type='radio']):not([type='range'])",
-  "textarea",
-  "[contenteditable='true']",
-].join(",");
-
 const CursorEffect = () => {
   const cursorRef = useRef(null);
 
   useEffect(() => {
-    const canUseCustomCursor =
+    const canUseSparkles =
       window.matchMedia("(pointer: fine)").matches &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (!canUseCustomCursor) {
+    if (!canUseSparkles) {
       return undefined;
     }
 
-    document.documentElement.classList.add("has-aesthetic-cursor");
-
     const cursor = cursorRef.current;
+
     if (!cursor) {
       return undefined;
     }
 
-    const dot = cursor.querySelector(".cursor-effect__dot");
-    const ring = cursor.querySelector(".cursor-effect__ring");
-    const aura = cursor.querySelector(".cursor-effect__aura");
-    const trails = Array.from(cursor.querySelectorAll(".cursor-effect__trail"));
-
-    let animationFrame = 0;
-    let movingTimeout = 0;
-    let pointerX = window.innerWidth / 2;
-    let pointerY = window.innerHeight / 2;
-    let ringX = pointerX;
-    let ringY = pointerY;
-    const trailPoints = trails.map(() => ({ x: pointerX, y: pointerY }));
-
-    const setCursorVisible = () => {
-      cursor.classList.add("is-visible");
-    };
-
-    const setCursorHidden = () => {
-      cursor.classList.remove("is-visible", "is-hovering", "is-pressing", "is-text", "is-moving");
-    };
-
-    const isInteractiveElement = (target) =>
-      target instanceof Element && target.closest(interactiveSelector);
-
-    const isTextElement = (target) =>
-      target instanceof Element && target.closest(textSelector);
+    let lastSparkleTime = 0;
 
     const removeNode = (node) => {
       if (node.parentNode) {
@@ -69,124 +26,57 @@ const CursorEffect = () => {
       }
     };
 
-    const createClickBurst = (x, y) => {
-      const ripple = document.createElement("span");
-      ripple.className = "cursor-effect__ripple";
-      ripple.style.left = `${x}px`;
-      ripple.style.top = `${y}px`;
-      ripple.addEventListener("animationend", () => removeNode(ripple), { once: true });
-      cursor.appendChild(ripple);
+    const createSparkle = (x, y, isClick = false) => {
+      const sparkle = document.createElement("span");
+      const offsetRange = isClick ? 28 : 14;
+      const offsetX = (Math.random() - 0.5) * offsetRange - 3;
+      const offsetY = (Math.random() - 0.5) * offsetRange + 4;
+      const size = isClick ? 10 + Math.random() * 5 : 7 + Math.random() * 4;
 
-      Array.from({ length: 7 }).forEach((_, index) => {
-        const spark = document.createElement("span");
-        const angle = (Math.PI * 2 * index) / 7;
-        const distance = 26 + index * 2;
-
-        spark.className = "cursor-effect__spark";
-        spark.style.setProperty("--spark-x", `${Math.cos(angle) * distance}px`);
-        spark.style.setProperty("--spark-y", `${Math.sin(angle) * distance}px`);
-        spark.style.left = `${x}px`;
-        spark.style.top = `${y}px`;
-        spark.addEventListener("animationend", () => removeNode(spark), { once: true });
-        cursor.appendChild(spark);
+      sparkle.className = "page-sparkle";
+      sparkle.style.left = `${x}px`;
+      sparkle.style.top = `${y}px`;
+      sparkle.style.width = `${size}px`;
+      sparkle.style.height = `${size}px`;
+      sparkle.style.setProperty("--sparkle-x", `${offsetX}px`);
+      sparkle.style.setProperty("--sparkle-y", `${offsetY}px`);
+      sparkle.addEventListener("animationend", () => removeNode(sparkle), {
+        once: true,
       });
+
+      cursor.appendChild(sparkle);
     };
 
     const handlePointerMove = (event) => {
-      pointerX = event.clientX;
-      pointerY = event.clientY;
-      setCursorVisible();
-      cursor.classList.add("is-moving");
+      const now = performance.now();
 
-      window.clearTimeout(movingTimeout);
-      movingTimeout = window.setTimeout(() => {
-        cursor.classList.remove("is-moving");
-      }, 120);
-    };
-
-    const handlePointerOver = (event) => {
-      if (isInteractiveElement(event.target)) {
-        cursor.classList.add("is-hovering");
+      if (now - lastSparkleTime < 30) {
+        return;
       }
 
-      if (isTextElement(event.target)) {
-        cursor.classList.add("is-text");
-      }
-    };
-
-    const handlePointerOut = (event) => {
-      if (!isInteractiveElement(event.relatedTarget)) {
-        cursor.classList.remove("is-hovering");
-      }
-
-      if (!isTextElement(event.relatedTarget)) {
-        cursor.classList.remove("is-text");
-      }
+      lastSparkleTime = now;
+      createSparkle(event.clientX, event.clientY);
     };
 
     const handlePointerDown = (event) => {
-      cursor.classList.add("is-pressing");
-      createClickBurst(event.clientX, event.clientY);
-    };
-
-    const handlePointerUp = () => {
-      cursor.classList.remove("is-pressing");
-    };
-
-    const animateCursor = () => {
-      ringX += (pointerX - ringX) * 0.18;
-      ringY += (pointerY - ringY) * 0.18;
-
-      dot.style.transform = `translate3d(${pointerX}px, ${pointerY}px, 0) translate(-50%, -50%)`;
-      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
-      aura.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
-
-      trailPoints.forEach((point, index) => {
-        const leadPoint = index === 0 ? { x: ringX, y: ringY } : trailPoints[index - 1];
-        const easing = 0.22 - index * 0.016;
-
-        point.x += (leadPoint.x - point.x) * easing;
-        point.y += (leadPoint.y - point.y) * easing;
-        trails[index].style.transform = `translate3d(${point.x}px, ${point.y}px, 0) translate(-50%, -50%)`;
+      Array.from({ length: 7 }).forEach(() => {
+        createSparkle(event.clientX, event.clientY, true);
       });
-
-      animationFrame = window.requestAnimationFrame(animateCursor);
     };
 
-    window.addEventListener("pointermove", handlePointerMove, { passive: true });
-    window.addEventListener("pointerleave", setCursorHidden);
+    window.addEventListener("pointermove", handlePointerMove, {
+      passive: true,
+    });
     window.addEventListener("pointerdown", handlePointerDown);
-    window.addEventListener("pointerup", handlePointerUp);
-    document.addEventListener("pointerover", handlePointerOver);
-    document.addEventListener("pointerout", handlePointerOut);
-
-    animateCursor();
 
     return () => {
-      window.cancelAnimationFrame(animationFrame);
-      window.clearTimeout(movingTimeout);
       window.removeEventListener("pointermove", handlePointerMove);
-      window.removeEventListener("pointerleave", setCursorHidden);
       window.removeEventListener("pointerdown", handlePointerDown);
-      window.removeEventListener("pointerup", handlePointerUp);
-      document.removeEventListener("pointerover", handlePointerOver);
-      document.removeEventListener("pointerout", handlePointerOut);
-      document.documentElement.classList.remove("has-aesthetic-cursor");
+      cursor.replaceChildren();
     };
   }, []);
 
-  return (
-    <div ref={cursorRef} className="cursor-effect" aria-hidden="true">
-      <span className="cursor-effect__aura" />
-      <span className="cursor-effect__trail cursor-effect__trail--one" />
-      <span className="cursor-effect__trail cursor-effect__trail--two" />
-      <span className="cursor-effect__trail cursor-effect__trail--three" />
-      <span className="cursor-effect__trail cursor-effect__trail--four" />
-      <span className="cursor-effect__trail cursor-effect__trail--five" />
-      <span className="cursor-effect__ring" />
-      <span className="cursor-effect__dot" />
-    </div>
-  );
+  return <div ref={cursorRef} className="cursor-effect" aria-hidden="true" />;
 };
 
 export default CursorEffect;
