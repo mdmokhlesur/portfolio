@@ -21,7 +21,26 @@ function App() {
   useEffect(() => {
     if (!hash) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      return;
     }
+
+    const timeoutId = window.setTimeout(() => {
+      const target = document.querySelector(hash);
+
+      if (target) {
+        const navOffset = 112;
+        const targetTop =
+          target.getBoundingClientRect().top + window.scrollY - navOffset;
+
+        window.scrollTo({
+          top: targetTop,
+          left: 0,
+          behavior: "smooth",
+        });
+      }
+    }, 80);
+
+    return () => window.clearTimeout(timeoutId);
   }, [pathname, hash]);
 
   return (

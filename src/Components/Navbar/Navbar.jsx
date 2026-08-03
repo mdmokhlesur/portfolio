@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import useTheme from "../../hooks/useTheme";
@@ -6,6 +6,9 @@ import useTheme from "../../hooks/useTheme";
 const Navbar = () => {
     const [isSticky, setSticky] = useState(false);
     const { theme, toggleTheme } = useTheme();
+    const { pathname, hash } = useLocation();
+    const isHomePage = pathname === "/";
+    const isAllWorkPage = pathname.startsWith("/my-work");
     const scrollStart = () => {
         setSticky(window.scrollY > 105);
     }
@@ -15,11 +18,36 @@ const Navbar = () => {
     },[])
 
     const navLink = <>
-        <li><NavLink to='/'><Icon className="text-lg" icon="octicon:home-16" /><span>Home</span></NavLink></li>
-        <li><a href="/#my-work"><Icon className="text-lg" icon="octicon:project-16" /><span>Projects</span></a></li>
-        <li><a href="/#skills"><Icon className="text-lg" icon="octicon:code-square-16" /><span>Skills</span></a></li>
-        <li><a href="/#contract"><Icon className="text-lg" icon="octicon:mail-16" /><span>Contact</span></a></li>
-        <li><NavLink to='/my-work'><Icon className="text-lg" icon="octicon:repo-16" /><span>All Works</span></NavLink></li>
+        <li>
+            <NavLink to='/' end className={isHomePage && !hash ? "active" : ""}>
+                <Icon className="text-lg" icon="octicon:home-16" />
+                <span>Home</span>
+            </NavLink>
+        </li>
+        <li>
+            <Link to="/#my-work" className={isHomePage && hash === "#my-work" ? "active" : ""}>
+                <Icon className="text-lg" icon="octicon:project-16" />
+                <span>Projects</span>
+            </Link>
+        </li>
+        <li>
+            <Link to="/#skills" className={isHomePage && hash === "#skills" ? "active" : ""}>
+                <Icon className="text-lg" icon="octicon:code-square-16" />
+                <span>Skills</span>
+            </Link>
+        </li>
+        <li>
+            <Link to="/#contract" className={isHomePage && hash === "#contract" ? "active" : ""}>
+                <Icon className="text-lg" icon="octicon:mail-16" />
+                <span>Contact</span>
+            </Link>
+        </li>
+        <li>
+            <NavLink to='/my-work' className={isAllWorkPage ? "active" : ""}>
+                <Icon className="text-lg" icon="octicon:repo-16" />
+                <span>All Work</span>
+            </NavLink>
+        </li>
     </>
     return (
         <header className={`site-nav github-header sticky top-0 z-40 border-b ${isSticky ? "is-sticky" : ""} ${theme !== 'light' ? 'border-zinc-800' : 'border-zinc-200'}`}>

@@ -10,14 +10,14 @@ const MyWork = () => {
     <section id="my-work">
       <SectionTitle
         logo="octicon:repo-16"
-        title="Selected Work"
-        headline="Recent projects built across frontend, backend, and product flows"
+        title="Popular repositories"
+        headline="Pinned projects across frontend, backend, commerce, and product flows"
       />
-      <div className="my-work-section mt-8 grid h-auto">
-        {projectData.slice(0, 4)?.map((project, index) => (
-          <SingleProject key={project?.id} project={project} index={index} />
+      <div className="my-work-section mt-8 grid grid-cols-1 gap-4 xl:grid-cols-2">
+        {projectData.slice(0, 4)?.map((project) => (
+          <SingleProject key={project?.id} project={project} />
         ))}
-        </div>
+      </div>
       <div className="mt-8 text-center lg:mt-10">
         <Link to="/my-work">
           <Button size="wide">
