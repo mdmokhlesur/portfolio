@@ -1,12 +1,12 @@
 import { Icon } from "@iconify/react";
-import profile from "../../../assets/profile.jpg"
+import AvatarPlaceholder from "../../../Components/AvatarPlaceholder/AvatarPlaceholder";
 
 const Sidebar = () => {
     return (
         <aside id="slideBar" className="profile-panel-wrap order-1 lg:order-1 lg:self-start">
             <div className="profile-panel relative border">
                 <figure className="profile-image">
-                    <img className="h-full w-full object-cover" src={profile} alt="Mokhlesur Rahman" />
+                    <AvatarPlaceholder className="profile-placeholder" />
                     <span className="profile-status" aria-label="Front-End Developer">
                         <Icon icon="octicon:code-16" />
                     </span>

@@ -2,6 +2,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import useTheme from "../../hooks/useTheme";
+import AvatarPlaceholder from "../AvatarPlaceholder/AvatarPlaceholder";
 
 const Navbar = () => {
     const [isSticky, setSticky] = useState(false);
@@ -54,7 +55,7 @@ const Navbar = () => {
             <div className="github-topbar flex items-center justify-between gap-3 px-4 py-2 md:px-6">
                 <div className="flex min-w-0 items-center gap-3">
                     <Link to='/' className="github-brand flex min-w-0 items-center gap-3">
-                        <img className="nav-brand-avatar" src="/circle-profile.png" alt="Mokhlesur Rahman" />
+                        <AvatarPlaceholder className="nav-brand-avatar nav-brand-placeholder" />
                         <span className="truncate text-sm font-semibold">mokhlesur-rahman</span>
                     </Link>
                 </div>

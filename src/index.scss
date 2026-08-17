@@ -230,11 +230,13 @@ p {
     border-top: 1px solid transparent;
     border-bottom: 1px solid #30363d;
     overflow: hidden;
-    padding-top: 0.18rem;
+    padding-top: 0.42rem;
+    padding-bottom: 0.2rem;
 }
 
 .github-tabs .menu {
-    min-height: 2rem;
+    min-height: 2.15rem;
+    gap: 0.08rem;
     padding: 0;
     scrollbar-width: none;
 }
@@ -245,23 +247,24 @@ p {
 
 .github-tabs .menu a {
     position: relative;
-    height: 2rem;
-    border-radius: 0;
+    min-height: 1.9rem;
+    height: auto;
+    border-radius: 6px;
     color: #f0f6fc;
-    gap: 0.55rem;
-    padding: 0 0.8rem 0.04rem;
+    gap: 0.42rem;
+    padding: 0.26rem 0.56rem;
     white-space: nowrap;
     opacity: 0.78;
 }
 
 .github-tabs .menu a:hover {
-    background: transparent !important;
+    background: rgba(177, 186, 196, 0.12) !important;
     color: #ffffff;
     opacity: 1;
 }
 
 .github-tabs .menu a.active {
-    background: transparent !important;
+    background: rgba(177, 186, 196, 0.16) !important;
     color: #ffffff;
     opacity: 1;
 }
@@ -269,9 +272,9 @@ p {
 .github-tabs .menu a.active::after {
     content: "";
     position: absolute;
-    right: 0.65rem;
-    bottom: -1px;
-    left: 0.65rem;
+    right: 0.48rem;
+    bottom: -0.22rem;
+    left: 0.48rem;
     height: 2px;
     border-radius: 999px;
     background: #f78166;
@@ -283,18 +286,19 @@ p {
     }
 
     .github-tabs {
-        padding-top: 0.14rem;
+        padding-top: 0.34rem;
+        padding-bottom: 0.18rem;
     }
 
     .github-tabs .menu {
-        min-height: 1.9rem;
-        gap: 0.1rem;
+        min-height: 2rem;
+        gap: 0.06rem;
     }
 
     .github-tabs .menu a {
-        height: 1.9rem;
-        gap: 0.3rem;
-        padding: 0 0.42rem 0.04rem;
+        min-height: 1.75rem;
+        gap: 0.26rem;
+        padding: 0.22rem 0.34rem;
         font-size: 0.72rem;
     }
 
@@ -304,8 +308,8 @@ p {
     }
 
     .github-tabs .menu a.active::after {
-        right: 0.35rem;
-        left: 0.35rem;
+        right: 0.3rem;
+        left: 0.3rem;
     }
 }
 
@@ -363,6 +367,7 @@ p {
 
 [data-theme="light"] .github-tabs .menu a:hover,
 [data-theme="light"] .github-tabs .menu a.active {
+    background: rgba(208, 215, 222, 0.32) !important;
     color: $ink;
 }
 
@@ -389,6 +394,31 @@ p {
     border: 1px solid #30363d;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.nav-brand-placeholder,
+.profile-placeholder {
+    display: grid;
+    position: relative;
+    place-items: center;
+    overflow: hidden;
+    background: #f6f8fa;
+}
+
+.nav-brand-placeholder {
+    flex: 0 0 auto;
+}
+
+.avatar-placeholder-grid {
+    display: grid;
+    width: 82%;
+    height: 82%;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.avatar-pixel.is-active {
+    background: #86d18b;
 }
 
 .primary-button,
@@ -590,9 +620,21 @@ p {
     transition: transform 700ms ease, filter 700ms ease;
 }
 
+.profile-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: transform 700ms ease, background-color 250ms ease;
+}
+
 .profile-panel:hover .profile-image img {
     transform: scale(1.025);
     filter: saturate(1) contrast(1.05);
+}
+
+.profile-panel:hover .profile-placeholder {
+    background: #ffffff;
+    transform: scale(1.025);
 }
 
 .profile-status {
@@ -1502,6 +1544,15 @@ p {
 [data-theme="forest"] .profile-image {
     background: $dark-subtle;
     border-color: $dark-line;
+}
+
+[data-theme="forest"] .nav-brand-placeholder,
+[data-theme="forest"] .profile-placeholder {
+    background: #f6f8fa;
+}
+
+[data-theme="forest"] .profile-panel:hover .profile-placeholder {
+    background: #ffffff;
 }
 
 [data-theme="forest"] .profile-status {
