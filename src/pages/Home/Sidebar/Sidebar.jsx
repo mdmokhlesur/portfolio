@@ -18,18 +18,18 @@ const Sidebar = () => {
                         Hi there, I&apos;m Mokhlesur Rahman. Front-End Developer building modern web and desktop applications.
                     </p>
                     <div className="profile-actions mt-5">
-                        <a href="Mokhlesur-Rahman-resume.pdf" download="Mokhlesur-Rahman-resume.pdf">
+                        <a href="Mokhlesur-Rahman-resume.pdf" download="Mokhlesur-Rahman-resume.pdf" data-cursor-label="Download CV">
                             Download Resume
                         </a>
                     </div>
-                    <div className="profile-meta mt-5 space-y-3 text-sm">
+                    <div className="mt-5 space-y-3 text-sm">
                         <span className="profile-contact-row"><Icon className="text-lg" icon="octicon:briefcase-16" />Front-End Developer</span>
                         <span className="profile-contact-row"><Icon className="text-lg" icon="octicon:location-16" />Dhaka, Bangladesh</span>
-                        <a className="profile-contact-row" href="mailto:mokhlesurinfo5@gmail.com"><Icon className="text-base" icon="octicon:mail-16" /> mokhlesurinfo5@gmail.com</a>
-                        <a className="profile-contact-row" href="tel:+8801818886577"><Icon className="text-lg" icon="octicon:device-mobile-16" />+880 1818-886577</a>
-                        <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://mokhlesur.vercel.app/"><Icon className="text-lg" icon="octicon:link-16" />mokhlesur.vercel.app</a>
-                        <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://github.com/mdmokhlesur"><Icon className="text-lg" icon="fa-brands:github" />github.com/mdmokhlesur</a>
-                        <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://linkedin.com/in/mokhlesurrahman018"><Icon className="text-lg" icon="fa-brands:linkedin" />linkedin.com/in/mokhlesurrahman018</a>
+                        <a className="profile-contact-row" href="mailto:mokhlesurinfo5@gmail.com" data-cursor-label="Send email"><Icon className="text-base" icon="octicon:mail-16" /> mokhlesurinfo5@gmail.com</a>
+                        <a className="profile-contact-row" href="tel:+8801818886577" data-cursor-label="Call"><Icon className="text-lg" icon="octicon:device-mobile-16" />+880 1818-886577</a>
+                        <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://mokhlesur.vercel.app/" data-cursor-label="Open site"><Icon className="text-lg" icon="octicon:link-16" />mokhlesur.vercel.app</a>
+                        <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://github.com/mdmokhlesur" data-cursor-label="Open GitHub"><Icon className="text-lg" icon="fa-brands:github" />github.com/mdmokhlesur</a>
+                        <a className="profile-contact-row" target="_blank" rel="noreferrer" href="https://linkedin.com/in/mokhlesurrahman018" data-cursor-label="Open LinkedIn"><Icon className="text-lg" icon="fa-brands:linkedin" />linkedin.com/in/mokhlesurrahman018</a>
                     </div>
                 </div>
             </div>

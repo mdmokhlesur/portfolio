@@ -19,7 +19,7 @@ const MyWork = () => {
         ))}
       </div>
       <div className="mt-8 text-center lg:mt-10">
-        <Link to="/my-work">
+        <Link to="/my-work" data-cursor-label="Explore work">
           <Button size="wide">
             Explore All Work <Icon className="text-base" icon="octicon:arrow-right-16" />
           </Button>

@@ -17,7 +17,7 @@ const SingleProject = ({ project }) => {
     <article className="repo-card flex h-full flex-col" data-aos="fade-up">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <Link to={`/my-work/${slug}`} className="repo-card-title">
+          <Link to={`/my-work/${slug}`} className="repo-card-title" data-cursor-label="Open project">
             <Icon icon="octicon:repo-16" />
             <span>{title}</span>
           </Link>
@@ -32,7 +32,7 @@ const SingleProject = ({ project }) => {
           {mainTechnology}
         </span>
         <span className="repo-meta-pill">{category}</span>
-        <Link to={`/my-work/${slug}`} className="repo-details-link">
+        <Link to={`/my-work/${slug}`} className="repo-details-link" data-cursor-label="View details">
           View details <Icon icon="octicon:arrow-right-16" />
         </Link>
       </div>

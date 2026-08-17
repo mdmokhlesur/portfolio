@@ -36,10 +36,10 @@ const Contract = () => {
           Send a short note about your idea, product, or role. I will get the message directly in my inbox and reply from there.
         </p>
         <div className="mt-8 space-y-3 text-sm">
-          <a className="profile-contact-row" href="mailto:mokhlesurinfo5@gmail.com">
+          <a className="profile-contact-row" href="mailto:mokhlesurinfo5@gmail.com" data-cursor-label="Send email">
             <Icon icon="octicon:mail-16" /> mokhlesurinfo5@gmail.com
           </a>
-          <a className="profile-contact-row" href="tel:+8801818886577">
+          <a className="profile-contact-row" href="tel:+8801818886577" data-cursor-label="Call">
             <Icon icon="octicon:device-mobile-16" /> +8801818886577
           </a>
         </div>
@@ -104,7 +104,7 @@ const Contract = () => {
             <span className="form-error mt-1">Message is required</span>
           )}
         </div>
-        <Button type="submit" size="full" disabled={isSubmitting}>
+        <Button type="submit" size="full" disabled={isSubmitting} data-cursor-label="Send message">
           {isSubmitting ? "Sending..." : "Send message"} <Icon className="text-xl relative top-[1px]" icon="octicon:paper-airplane-16" />
         </Button>
       </form>

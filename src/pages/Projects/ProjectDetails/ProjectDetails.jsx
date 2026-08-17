@@ -24,7 +24,7 @@ const ProjectDetails = () => {
     <div className="portfolio-page repo-page-surface">
       <PageTitle title={project.title} />
       <div className="site-container mx-auto px-4 py-10 md:px-8 lg:py-14">
-        <Link to="/my-work" className="repo-back-link">
+        <Link to="/my-work" className="repo-back-link" data-cursor-label="Back to work">
           <Icon icon="octicon:arrow-left-16" />
           All work
         </Link>
@@ -44,7 +44,7 @@ const ProjectDetails = () => {
           </div>
           <div className="repo-detail-actions">
             {project.liveLink && (
-              <a target="_blank" rel="noreferrer" href={project.liveLink}>
+              <a target="_blank" rel="noreferrer" href={project.liveLink} data-cursor-label="Open live site">
                 <Icon icon="octicon:link-external-16" />
                 Live website
               </a>
@@ -55,6 +55,7 @@ const ProjectDetails = () => {
                 target="_blank"
                 rel="noreferrer"
                 href={item.link}
+                data-cursor-label="Open GitHub"
               >
                 <Icon icon="fa-brands:github" />
                 {item.title}

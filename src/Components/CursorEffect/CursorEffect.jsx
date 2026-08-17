@@ -1,14 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CursorEffect = () => {
   const cursorRef = useRef(null);
+  const [label, setLabel] = useState("");
 
   useEffect(() => {
-    const canUseSparkles =
+    const canUseCursor =
       window.matchMedia("(pointer: fine)").matches &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (!canUseSparkles) {
+    if (!canUseCursor) {
       return undefined;
     }
 
@@ -18,65 +19,98 @@ const CursorEffect = () => {
       return undefined;
     }
 
-    let lastSparkleTime = 0;
+    document.body.classList.add("portfolio-cursor-active");
 
-    const removeNode = (node) => {
-      if (node.parentNode) {
-        node.parentNode.removeChild(node);
-      }
-    };
+    let cursorX = -80;
+    let cursorY = -80;
+    let targetX = -80;
+    let targetY = -80;
+    let animationFrameId = 0;
 
-    const createSparkle = (x, y, isClick = false) => {
-      const sparkle = document.createElement("span");
-      const offsetRange = isClick ? 28 : 14;
-      const offsetX = (Math.random() - 0.5) * offsetRange - 3;
-      const offsetY = (Math.random() - 0.5) * offsetRange + 4;
-      const size = isClick ? 10 + Math.random() * 5 : 7 + Math.random() * 4;
-
-      sparkle.className = "page-sparkle";
-      sparkle.style.left = `${x}px`;
-      sparkle.style.top = `${y}px`;
-      sparkle.style.width = `${size}px`;
-      sparkle.style.height = `${size}px`;
-      sparkle.style.setProperty("--sparkle-x", `${offsetX}px`);
-      sparkle.style.setProperty("--sparkle-y", `${offsetY}px`);
-      sparkle.addEventListener("animationend", () => removeNode(sparkle), {
-        once: true,
-      });
-
-      cursor.appendChild(sparkle);
+    const render = () => {
+      cursorX += (targetX - cursorX) * 0.18;
+      cursorY += (targetY - cursorY) * 0.18;
+      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+      animationFrameId = window.requestAnimationFrame(render);
     };
 
     const handlePointerMove = (event) => {
-      const now = performance.now();
+      targetX = event.clientX;
+      targetY = event.clientY;
+      cursor.classList.add("is-visible");
+    };
 
-      if (now - lastSparkleTime < 30) {
+    const handlePointerOver = (event) => {
+      const target = event.target.closest?.("a, button, [data-cursor-label]");
+
+      if (!target) {
         return;
       }
 
-      lastSparkleTime = now;
-      createSparkle(event.clientX, event.clientY);
+      const labelTarget = event.target.closest?.("[data-cursor-label]");
+      const nextLabel = labelTarget?.getAttribute("data-cursor-label");
+
+      cursor.classList.add("is-active");
+
+      if (nextLabel) {
+        setLabel(nextLabel);
+      }
     };
 
-    const handlePointerDown = (event) => {
-      Array.from({ length: 7 }).forEach(() => {
-        createSparkle(event.clientX, event.clientY, true);
-      });
+    const handlePointerOut = (event) => {
+      const target = event.target.closest?.("[data-cursor-label], a, button");
+
+      if (!target) {
+        return;
+      }
+
+      const relatedTarget = event.relatedTarget;
+
+      if (relatedTarget instanceof Element && target.contains(relatedTarget)) {
+        return;
+      }
+
+      cursor.classList.remove("is-active", "is-pressed");
+      setLabel("");
     };
+
+    const handlePointerDown = () => {
+      cursor.classList.add("is-pressed");
+    };
+
+    const handlePointerUp = () => {
+      cursor.classList.remove("is-pressed");
+    };
+
+    animationFrameId = window.requestAnimationFrame(render);
 
     window.addEventListener("pointermove", handlePointerMove, {
       passive: true,
     });
+    window.addEventListener("pointerover", handlePointerOver);
+    window.addEventListener("pointerout", handlePointerOut);
     window.addEventListener("pointerdown", handlePointerDown);
+    window.addEventListener("pointerup", handlePointerUp);
 
     return () => {
+      document.body.classList.remove("portfolio-cursor-active");
+      window.cancelAnimationFrame(animationFrameId);
       window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerover", handlePointerOver);
+      window.removeEventListener("pointerout", handlePointerOut);
       window.removeEventListener("pointerdown", handlePointerDown);
-      cursor.replaceChildren();
+      window.removeEventListener("pointerup", handlePointerUp);
     };
   }, []);
 
-  return <div ref={cursorRef} className="cursor-effect" aria-hidden="true" />;
+  return (
+    <div ref={cursorRef} className="cursor-effect" aria-hidden="true">
+      <span className="cursor-glow" />
+      <span className="cursor-ring" />
+      <span className="cursor-dot" />
+      <span className={`cursor-label ${label ? "is-visible" : ""}`}>{label}</span>
+    </div>
+  );
 };
 
 export default CursorEffect;
